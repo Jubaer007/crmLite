@@ -1,0 +1,91 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- FIRST ROW -->
+    <div class="row">
+        <div class="col-md">
+            <div class="card">
+                <div class="card-body ">
+                    <h4 class="card-title"> Customer </h4>
+                    <hr>
+                    <form action="" method="post">
+                        <a href="#" class="btn btn-outline-primary btn-block">Create Customer</a>
+                        <a href="#" class="btn btn-outline-danger btn-block">Delete Customer</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- FIRST COLOUMN END -->
+        <div class="col-md">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"> Contact Information </h4>
+                    <hr>
+                    <form action="" method="get">
+                        <p><b>Email:</b> {{customer.email}} </p>
+                        <p><b>Phone:</b> {{customer.phone}} </p>
+                    </form> 
+                </div>
+            </div>
+        </div>
+        <!-- SECOND COLUMN END -->
+        <div class="col-md">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"> Total Orders </h4>
+                    <hr>
+                    <h4>Total Orders Placed: <b>{{order.count}}</b></h4>
+                </div>
+            </div>
+        </div>
+        <!-- LAST COLUMN END -->
+    </div>
+    <!-- FIRST ROW END -->
+<br>
+    <!-- SECOND ROW  -->
+    <div class="row">
+        <div class="col-md">
+            <div class="card ">
+                <div class="card-body">
+                    <button type="button" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- SECOND ROW END -->
+<br>   
+    <div class="row">
+        <div class="col-md">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Ordered Date</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Update</th>
+                                <th scope="col">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for info in order%}
+                                <tr>
+                                    <td>{{ info.product }}</td>
+                                    <td>{{ info.product.category }}</td>
+                                    <td>{{ info.product.date_created }}</td>
+                                    <td>{{ info.status }}</td>
+                                    <td><button type="button" class="btn btn-primary">Update</button></td>
+                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

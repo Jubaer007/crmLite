@@ -1,0 +1,37 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<style>
+    table{
+        border: 1px solid rgb(219, 219, 219);
+    }
+</style>
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Products</h5>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th  scope="col"> Products </th>
+                        <th  scope="col"> Category </th>
+                        <th  scope="col"> Price </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for items in products%}
+                    <tr>
+                        <td>{{items.name}}</td>
+                        <td>{{items.category}}</td>
+                        <td>{{items.price}}</td>
+                    </tr>
+                    {% endfor%}
+                </tbody>    
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
