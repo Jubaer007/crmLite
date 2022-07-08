@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render, redirect
 from . import models
 from . import forms
@@ -67,11 +68,21 @@ def update(request, pk):
     if request.method == 'POST':
         form = forms.OrderForm(request.POST, instance=info)
         if form.is_valid():
-            print(form)
             form.save()
-            return redirect('/dashboard/')  
+            return redirect('/dashboard/')      
     context = {
         'form': form,
         'info':info
     }
     return render(request, 'accounts/update.html',context)
+
+
+def deleteOrder(request, pk):
+    info = models.Order.objects.get(id = pk)
+    if request.POST:
+        info.delete()
+        return redirect('/dashboard/')
+    context={
+        'info': info 
+    }
+    return render(request, 'accounts/delete.html', context)
